@@ -1,0 +1,48 @@
+
+
+
+
+on chat:
+	if {chatbann::%player%} is set:
+		cancel event
+		send "[&6Chat&f]&4Du wurdest aus dem Chat verbannt"
+		
+	stop
+
+
+
+
+
+command /chatban [<player>]:
+	permission: sk.admin
+	trigger:
+		set {chatbann::%arg-1%} to true
+		log "%arg-1% hat von %player% einen Chatbann bekommen." in "Ban.txt"
+		send "[&6Chat&f]&6Du hast %arg-1% verbannt"
+
+command /unchatban [<player>]:
+	permission: sk.admin
+	trigger:
+		set {chatbann::%arg-1%} to false
+		log "%arg-1% wurde von %player% entbannt." in "Ban.txt"
+		send "[&6Chat&f]&6Du hast %arg-1% entbannt"
+
+
+
+command /ban [<player>]:
+	permission: sk.admin
+	trigger:
+		set {bann::%arg-1%} to true
+		log "%arg-1% wurde von %player% verbannt." in "Ban.txt"
+		send "[&6Chat&f]&6Du hast %arg-1% verbannt"
+		ban arg-1 because of "&4Du wurdest von %player% verbannt"
+		kick arg-1 because of "&4Du wurdest von %player% verbannt"
+
+command /unban [<offlineplayer>]:
+	permission: sk.admin
+	trigger:
+		set {bann::%arg-1%} to false
+		log "%arg-1% wurde von %player% entbannt." in "Ban.txt"
+		send "[&6Chat&f]&6Du hast %arg-1% entbannt"
+		unban arg-1
+
