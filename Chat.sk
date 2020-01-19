@@ -3,7 +3,9 @@
 
 
 on chat:
-	if {chatbann::%player%} is set:
+	set {_chat} to chat-message
+	log "%{_chat}%" to "Chat.txt"
+	if {chatbann::%player%} is true:
 		cancel event
 		send "[&6Chat&f]&4Du wurdest aus dem Chat verbannt"
 		
@@ -45,4 +47,17 @@ command /unban [<offlineplayer>]:
 		log "%arg-1% wurde von %player% entbannt." in "Ban.txt"
 		send "[&6Chat&f]&6Du hast %arg-1% entbannt"
 		unban arg-1
+
+
+
+
+command /msg <player> <text>: 
+	trigger:
+		if {chatbann::%player%} is true:
+			send "[&6Chat&f]&4Du wurdest aus dem Chat verbannt"
+			stop
+
+		send "[%player%] %arg-2%" to arg-1
+
+
 
