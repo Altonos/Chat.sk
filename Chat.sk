@@ -1,16 +1,58 @@
 
 
+options:
+	blacklist01: "none"
+	blacklist02: "none"
+	blacklist03: "none"
+	blacklist04: "none"
+	blacklist05: "none"
+	blacklist06: "none"
+	blacklist07: "none"
+	blacklist08: "none"
+	blacklist09: "none"
+	blacklist10: "none"
+	blacklist11: "none"
+	blacklist12: "none"
+	blacklist13: "none"
+	blacklist14: "none"
+	blacklist15: "none"
+	blacklist16: "none"
+	blacklist17: "none"
+	blacklist18: "none"
+	blacklist19: "none"
+	blacklist20: "none"
+
+
 
 
 on chat:
 	set {_chat} to chat-message
 	log "%{_chat}%" to "Chat.txt"
+
 	if {chatbann::%player%} is true:
 		cancel event
 		send "[&6Chat&f]&4Du wurdest aus dem Chat verbannt"
-		
-	stop
+		stop
 
+	if {_chat} = {@blacklist01} or {@blacklist02} or {@blacklist03} or {@blacklist04} or {@blacklist05}:
+		cancel event
+		
+
+	if {_chat} = {@blacklist06} or {@blacklist07} or {@blacklist08} or {@blacklist09} or {@blacklist10}:
+		cancel event
+		
+
+
+	if {_chat} = {@blacklist11} or {@blacklist12} or {@blacklist13} or {@blacklist14} or {@blacklist15}:
+		cancel event
+		
+
+	if {_chat} = {@blacklist16} or {@blacklist17} or {@blacklist18} or {@blacklist19} or {@blacklist20}:
+		cancel event
+		
+
+
+	
 
 
 
